@@ -9,7 +9,9 @@ header,
 main,
 .projects-option,
 .sb-button,
-.projects {
+.projects,
+.task,
+.task-text {
     display: flex;
 }
 
@@ -60,20 +62,63 @@ nav.sidebar {
     border: none;
 }
 
-.projects-option .sb-button:first-of-type {
-    background-color: #4f4557;
-}
+/* .projects-option .sb-button:first-of-type {
+    background-color: #393646;
+} */
 
 .sb-button:hover {
     background-color: #4f4557;
     cursor: pointer;
 }
 
-.sb-button img {
+.sb-button:focus {
+    background-color: #393646;
+}
+
+.sb-button img,
+.task img {
     height: 23px;
 }
 
 .sidebar h1 {
     font-size: 28px;
     padding-left: 8px;
+}
+
+.content {
+    padding: 30px 50px;
+    flex: 1;
+}
+
+.project-title {
+    margin: 0;
+    color: #393646;
+    font-size: 36px;
+}
+
+.tasks {
+    margin-top: 16px;
+}
+
+.task-text {
+    gap: 5px;
+}
+
+.task-text p {
+    margin: 0;
+}
+
+.task {
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+.task:hover {
+    background-color: #dfd3b9;
+}
+
+.task-option img {
+    cursor: pointer;
+    margin-left: 3px;
 }
