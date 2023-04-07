@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
-    <script defer src="main.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <img src="./icons/todo-list-logo.svg" alt="">
-        <h1>Todo List</h1>
-    </header>
-    <main>
-        <nav class="sidebar">
-            <div class="projects-option">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo List</title>
+        <script defer src="main.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <img src="./icons/todo-list-logo.svg" alt="" />
+            <h1>Todo List</h1>
+        </header>
+        <main>
+            <nav class="sidebar">
+                <div class="projects-option">
+                    <button class="sb-button">
+                        <img src="./icons/inbox.svg" alt="" />
+                        Inbox
+                    </button>
+                    <button class="sb-button">
+                        <img src="./icons/today.svg" alt="" />
+                        Today
+                    </button>
+                    <button class="sb-button">
+                        <img src="./icons/week.svg" alt="" />
+                        This Week
+                    </button>
+                </div>
+
+                <h1>Projects</h1>
+
+                <div class="projects">
+                    <button class="sb-button">
+                        <img src="./icons/plus.svg" alt="" />
+                        Add Project
+                    </button>
+
+                    <button class="sb-button">
+                        <img src="./icons/projects.svg" alt="" />
+                        Project One
+                    </button>
+                </div>
+            </nav>
+            <div class="content">
+                <h1 class="project-title">Inbox</h1>
                 <button class="sb-button">
-                    <img src="./icons/inbox.svg" alt="">
-                    Inbox
+                    <img src="./icons/plus.svg" alt="" />
+                    Add Task
                 </button>
-                <button class="sb-button">
-                    <img src="./icons/today.svg" alt="">
-                    Today
-                </button>
-                <button class="sb-button">
-                    <img src="./icons/week.svg" alt="">
-                    This Week
-                </button>
+                <div class="tasks">
+                    <div class="task">
+                        <div class="task-text">
+                            <img src="./icons/checked-task.svg" alt="" />
+                            <p>Task One</p>
+                        </div>
+                        <div class="task-option">
+                            <img class="edit" src="./icons/edit.svg" alt="">
+                            <img class="delete" src="./icons/trash.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="task">
+                        <div class="task-text">
+                            <img src="./icons/unchecked-task.svg" alt="" />
+                            <p>Task Two</p>
+                        </div>
+                        <div class="task-option">
+                            <img class="edit" src="./icons/edit.svg" alt="">
+                            <img class="delete" src="./icons/trash.svg" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <h1>Projects</h1>
-
-            <div class="projects">
-                <button class="sb-button">
-                    <img src="./icons/plus.svg" alt="">
-                    Add Project
-                </button>
-
-                <button class="sb-button">
-                    <img src="./icons/projects.svg" alt="">
-                    Project One
-                </button>
-            </div>
-
-        </nav>
-        <div class="content"></div>
-    </main>
-</body>
+        </main>
+    </body>
 </html>
