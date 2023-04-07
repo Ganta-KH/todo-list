@@ -8,7 +8,8 @@ body,
 header,
 main,
 .projects-option,
-.sb-button {
+.sb-button,
+.projects {
     display: flex;
 }
 
@@ -37,36 +38,42 @@ header h1 {
 
 nav.sidebar {
     color: #f4eee0;
-    background-color: #6D5D6E;
+    background-color: #6d5d6e;
     width: 210px;
     height: calc(100vh - 6.5rem - 32px);
     padding: 16px;
 }
 
-.projects-option {
+.projects-option,
+.projects {
     flex-direction: column;
 }
 
 .sb-button {
     color: #f4eee0;
     font-size: 20px;
-    background-color: #6D5D6E;
-    border-radius: 8px;  
+    background-color: #6d5d6e;
+    border-radius: 8px;
     align-items: center;
     padding: 3px 16px;
     gap: 8px;
     border: none;
 }
 
-.sb-button:first-of-type {
-    background-color: #4F4557;
+.projects-option .sb-button:first-of-type {
+    background-color: #4f4557;
 }
 
 .sb-button:hover {
-    background-color: #4F4557;
+    background-color: #4f4557;
     cursor: pointer;
 }
 
 .sb-button img {
     height: 23px;
+}
+
+.sidebar h1 {
+    font-size: 28px;
+    padding-left: 8px;
 }
