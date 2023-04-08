@@ -15,8 +15,13 @@ main,
     display: flex;
 }
 
-body {
+p, 
+body,
+.project-title {
     margin: 0;
+}
+
+body {
     background-color: #f4eee0;
     flex-direction: column;
 }
@@ -85,13 +90,12 @@ nav.sidebar {
     padding-left: 8px;
 }
 
-.content {
+#content {
     padding: 30px 50px;
     flex: 1;
 }
 
 .project-title {
-    margin: 0;
     color: #393646;
     font-size: 36px;
 }
@@ -118,7 +122,8 @@ nav.sidebar {
     background-color: #dfd3b9;
 }
 
-.task-option img {
+.task-option img,
+.task-text img {
     cursor: pointer;
     margin-left: 3px;
 }
