@@ -1,1 +1,3 @@
-console.log("hello world!");
+import initPage from "./project";
+
+initPage();
