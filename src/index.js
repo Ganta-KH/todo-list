@@ -1,5 +1,5 @@
-import Project from "./project";
-import Task from "./task";
+import Project from "./modules/project";
+import Task from "./modules/task";
 
 const project = new Project("project One");
 
