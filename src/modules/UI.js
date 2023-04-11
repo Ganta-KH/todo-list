@@ -1,3 +1,11 @@
+export function showProjectName(projectTitle) {
+    const title = document.createElement("h1");
+    title.classList.add("project-title");
+    title.textContent = projectTitle;
+
+    return title;
+}
+
 export function addTaskButton() {
     const button = document.createElement("button");
     button.classList.add("sb-button");
@@ -22,8 +30,8 @@ export function showTask(task) {
     taskText.classList.add("task-text");
 
     const checkedImg = document.createElement("img");
-    checkedImg.src = "./icons/checked-task.svg"
-        ? task.state
+    checkedImg.src = task.state
+        ? "./icons/checked-task.svg"
         : "./icons/unchecked-task.svg";
 
     const p = document.createElement("p");
@@ -76,4 +84,9 @@ export function showProjectButton(project) {
     projectButton.appendChild(trash);
 
     return projectButton;
+}
+
+export function clearProject() {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
 }

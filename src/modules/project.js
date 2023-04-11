@@ -4,6 +4,10 @@ class Project {
         this.tasks = [];
     }
 
+    getName() {
+        return this.title;
+    }
+
     addTask(task) {
         this.tasks.push(task);
     }

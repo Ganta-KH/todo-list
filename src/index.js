@@ -1,5 +1,6 @@
 import Project from "./modules/project";
 import Task from "./modules/task";
+import initPage from "./modules/website";
 
 const project = new Project("project One");
 
@@ -21,3 +22,5 @@ console.log(project.tasks);
 
 const date = new Date();
 console.log(date.getMonth());
+
+initPage()
