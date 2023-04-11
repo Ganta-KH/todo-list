@@ -11,7 +11,8 @@ main,
 .sb-button,
 .projects,
 .task,
-.task-text {
+.task-text,
+.project-text {
     display: flex;
 }
 
@@ -126,4 +127,10 @@ nav.sidebar {
 .task-text img {
     cursor: pointer;
     margin-left: 3px;
+} 
+
+.project-text {
+    gap: 8px;
+    align-items: center;
+    margin-right: auto;
 }
