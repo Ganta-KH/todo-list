@@ -1,4 +1,4 @@
-import { clearProject, showProjectName, addTaskButton, showTask } from "./UI";
+import { clearProject, showProjectName, addTaskButton, showTask, addProjectOrTasK } from "./UI";
 import Task from "./task";
 
 function initTasks() {

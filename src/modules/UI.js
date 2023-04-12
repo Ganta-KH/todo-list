@@ -90,3 +90,38 @@ export function clearProject() {
     const content = document.getElementById("content");
     content.innerHTML = "";
 }
+
+export function addProjectOrTasK() {
+    const body = document.querySelector("body");
+
+    const info = document.createElement("div");
+    info.classList.add("info");
+
+    const addinfo = document.createElement("div");
+    addinfo.classList.add("add-info");
+
+    const input = document.createElement("input");
+    input.setAttribute("id", "title");
+    input.type = "text";
+
+    const buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+
+    const add = document.createElement("button");
+    add.classList.add("add");
+    add.textContent = "Add";
+
+    const cancel = document.createElement("button");
+    cancel.classList.add("cancel");
+    cancel.textContent = "Cancel";
+
+    buttons.appendChild(add);
+    buttons.appendChild(cancel);
+
+    addinfo.appendChild(input);
+    addinfo.appendChild(buttons);
+
+    info.appendChild(addinfo);
+
+    body.appendChild(info);
+}
