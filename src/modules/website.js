@@ -1,4 +1,10 @@
-import { clearProject, showProjectName, addTaskButton, showTask, addProjectOrTasK } from "./UI";
+import {
+    clearProject,
+    showProjectName,
+    addTaskButton,
+    showTask,
+    addProjectOrTasK,
+} from "./UI";
 import Task from "./task";
 
 function initTasks() {
@@ -33,5 +39,14 @@ function initPage() {
 
     content.appendChild(initProject());
 }
+
+function showForum(button) {
+    button.addEventListener("click", () => {
+        addProjectOrTasK();
+    });
+}
+
+const addProjectButton = document.querySelector(".add-project");
+showForum(addProjectButton);
 
 export default initPage;
