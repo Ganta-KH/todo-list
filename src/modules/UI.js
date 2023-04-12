@@ -1,3 +1,6 @@
+import { projects } from "./CONST";
+import Project from "./project";
+
 export function showProjectName(projectTitle) {
     const title = document.createElement("h1");
     title.classList.add("project-title");
@@ -86,6 +89,12 @@ export function showProjectButton(project) {
     return projectButton;
 }
 
+export function addProjectToSidebar(project) {
+    const sidebar = document.querySelector(".projects");
+
+    sidebar.appendChild(showProjectButton(project));
+}
+
 export function clearProject() {
     const content = document.getElementById("content");
     content.innerHTML = "";
@@ -110,10 +119,24 @@ export function addProjectOrTasK() {
     const add = document.createElement("button");
     add.classList.add("add");
     add.textContent = "Add";
+    add.addEventListener("click", () => {
+        const newProject = new Project(
+            document.querySelector("input").textContent
+        );
+
+        console.log(document.querySelector("input").textContent);
+        projects.push(newProject);
+
+        console.log(newProject);
+    });
 
     const cancel = document.createElement("button");
     cancel.classList.add("cancel");
     cancel.textContent = "Cancel";
+    cancel.addEventListener("click", () => {
+        const infoDiv = document.querySelector(".info");
+        infoDiv.remove();
+    });
 
     buttons.appendChild(add);
     buttons.appendChild(cancel);
@@ -124,4 +147,25 @@ export function addProjectOrTasK() {
     info.appendChild(addinfo);
 
     body.appendChild(info);
+}
+
+export function initTasks(tasks) {
+    const task = document.createElement("task");
+    task.classList.add("tasks");
+
+    task.appendChild(showTask(tasks));
+
+    return task;
+}
+
+export function initProject() {
+    const project = document.createElement("div");
+    project.classList.add("project");
+
+    project.appendChild(showProjectName("Inbox"));
+    project.appendChild(addTaskButton());
+
+    project.appendChild(initTasks());
+
+    return project;
 }
