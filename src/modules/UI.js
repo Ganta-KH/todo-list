@@ -64,6 +64,8 @@ export function showTask(task) {
 }
 
 export function showProjectButton(project) {
+    const projectsSidebar = document.querySelector(".projects");
+
     const projectButton = document.createElement("button");
     projectButton.classList.add("sb-button");
     projectButton.classList.add("page");
@@ -72,7 +74,7 @@ export function showProjectButton(project) {
     projectText.classList.add("project-text");
 
     const projectImg = document.createElement("img");
-    projectImg.scr = "./icons/projects.svg";
+    projectImg.src = "./icons/projects.svg";
 
     const p = document.createElement("p");
     p.textContent = project.title;
@@ -86,7 +88,7 @@ export function showProjectButton(project) {
     projectButton.appendChild(projectText);
     projectButton.appendChild(trash);
 
-    return projectButton;
+    projectsSidebar.appendChild(projectButton);
 }
 
 export function addProjectToSidebar(project) {
@@ -119,16 +121,6 @@ export function addProjectOrTasK() {
     const add = document.createElement("button");
     add.classList.add("add");
     add.textContent = "Add";
-    add.addEventListener("click", () => {
-        const newProject = new Project(
-            document.querySelector("input").textContent
-        );
-
-        console.log(document.querySelector("input").textContent);
-        projects.push(newProject);
-
-        console.log(newProject);
-    });
 
     const cancel = document.createElement("button");
     cancel.classList.add("cancel");
@@ -146,7 +138,21 @@ export function addProjectOrTasK() {
 
     info.appendChild(addinfo);
 
-    body.appendChild(info);
+    body.prepend(info);
+
+    add.addEventListener("click", () => {
+        /* const projectName = document.getElementById("#title");
+        console.log(projectName.value); */
+        const newProject = new Project(document.querySelector("input").value);
+
+        console.log(document.querySelector("input").value);
+        projects.push(newProject);
+
+        showProjectButton(newProject);
+
+        const infoDiv = document.querySelector(".info");
+        infoDiv.remove();
+    });
 }
 
 export function initTasks(tasks) {

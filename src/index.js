@@ -23,4 +23,4 @@ console.log(project.tasks);
 const date = new Date();
 console.log(date.getMonth());
 
-initPage()
+// initPage()
