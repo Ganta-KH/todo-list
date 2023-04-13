@@ -97,7 +97,7 @@ export function showProjectButton(project) {
 
     const projectButton = document.createElement("button");
     projectButton.classList.add("sb-button");
-    projectButton.classList.add("page");
+    //projectButton.classList.add("page");
     projectButton.setAttribute("id", "project");
 
     projectButton.addEventListener("click", showProjectPage);
@@ -185,6 +185,37 @@ export function loadProjects() {
     for (const project of projects) {
         showProjectButton(project);
     }
+}
+
+export function showDatePage() {
+    const viewOptions = document.querySelectorAll(".page");
+    viewOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            const content = document.getElementById("content");
+
+            clearProject();
+
+            const projectPage = document.createElement("div");
+            projectPage.classList.add("project");
+
+            projectPage.appendChild(showProjectName(option.textContent));
+
+            const tasks = document.createElement("tasks");
+            tasks.classList.add("tasks");
+
+            // eslint-disable-next-line no-restricted-syntax
+            for (const project of projects) {
+                // eslint-disable-next-line no-restricted-syntax
+                for (const task of project.tasks) {
+                    tasks.appendChild(showTask(task));
+                }
+            }
+
+            projectPage.appendChild(tasks);
+
+            content.appendChild(projectPage)
+        });
+    });
 }
 
 /* export function showAllTasks() {
