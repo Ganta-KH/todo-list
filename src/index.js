@@ -2,7 +2,7 @@ import Project from "./modules/project";
 import Task from "./modules/task";
 import initPage from "./modules/website";
 
-const project = new Project("project One");
+/* const project = new Project("project One");
 
 console.log(project.title);
 
@@ -21,6 +21,6 @@ project.removeTask(1);
 console.log(project.tasks);
 
 const date = new Date();
-console.log(date.getMonth());
+console.log(date.getMonth()); */
 
 // initPage()

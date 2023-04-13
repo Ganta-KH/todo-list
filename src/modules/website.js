@@ -1,4 +1,4 @@
-import { clearProject, addProjectOrTasK, initProject } from "./UI";
+import { clearProject, addProjectOrTasK, initProject, loadProjects } from "./UI";
 
 function initPage() {
     const content = document.getElementById("content");
@@ -16,5 +16,5 @@ function showForum(button) {
 
 const addProjectButton = document.querySelector(".add-project");
 showForum(addProjectButton);
-
+loadProjects()
 export default initPage;

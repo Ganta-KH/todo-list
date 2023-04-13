@@ -1,5 +1,10 @@
-import { projects } from "./CONST";
+import projects from "./CONST";
 import Project from "./project";
+
+export function clearProject() {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
+}
 
 export function showProjectName(projectTitle) {
     const title = document.createElement("h1");
@@ -64,11 +69,38 @@ export function showTask(task) {
 }
 
 export function showProjectButton(project) {
+    function showProjectPage() {
+        const content = document.getElementById("content");
+
+        clearProject();
+
+        const projectPage = document.createElement("div");
+        projectPage.classList.add("project");
+
+        projectPage.appendChild(showProjectName(project.title));
+        projectPage.appendChild(addTaskButton());
+
+        const taskCard = document.createElement("div");
+        taskCard.classList.add("tasks");
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const task of project.tasks) {
+            taskCard.appendChild(showTask(task));
+        }
+
+        projectPage.appendChild(taskCard);
+
+        content.appendChild(projectPage);
+    }
+
     const projectsSidebar = document.querySelector(".projects");
 
     const projectButton = document.createElement("button");
     projectButton.classList.add("sb-button");
     projectButton.classList.add("page");
+    projectButton.setAttribute("id", "project");
+
+    projectButton.addEventListener("click", showProjectPage);
 
     const projectText = document.createElement("div");
     projectText.classList.add("project-text");
@@ -95,11 +127,6 @@ export function addProjectToSidebar(project) {
     const sidebar = document.querySelector(".projects");
 
     sidebar.appendChild(showProjectButton(project));
-}
-
-export function clearProject() {
-    const content = document.getElementById("content");
-    content.innerHTML = "";
 }
 
 export function addProjectOrTasK() {
@@ -141,8 +168,6 @@ export function addProjectOrTasK() {
     body.prepend(info);
 
     add.addEventListener("click", () => {
-        /* const projectName = document.getElementById("#title");
-        console.log(projectName.value); */
         const newProject = new Project(document.querySelector("input").value);
 
         console.log(document.querySelector("input").value);
@@ -155,23 +180,17 @@ export function addProjectOrTasK() {
     });
 }
 
-export function initTasks(tasks) {
-    const task = document.createElement("task");
-    task.classList.add("tasks");
-
-    task.appendChild(showTask(tasks));
-
-    return task;
+export function loadProjects() {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const project of projects) {
+        showProjectButton(project);
+    }
 }
 
-export function initProject() {
-    const project = document.createElement("div");
-    project.classList.add("project");
-
-    project.appendChild(showProjectName("Inbox"));
-    project.appendChild(addTaskButton());
-
-    project.appendChild(initTasks());
-
-    return project;
-}
+/* export function showAllTasks() {
+    for (const project of projects) {
+        for (const task of project.tasks) {
+            showTask(task);
+        }
+    }
+} */
