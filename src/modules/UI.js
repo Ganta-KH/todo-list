@@ -97,7 +97,6 @@ export function showProjectButton(project) {
 
     const projectButton = document.createElement("button");
     projectButton.classList.add("sb-button");
-    //projectButton.classList.add("page");
     projectButton.setAttribute("id", "project");
 
     projectButton.addEventListener("click", showProjectPage);
