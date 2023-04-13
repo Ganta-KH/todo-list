@@ -18,6 +18,8 @@ export function addTaskButton() {
     const button = document.createElement("button");
     button.classList.add("sb-button");
 
+    button.addEventListener("click", addProjectOrTasK);
+
     const image = document.createElement("img");
     image.src = "./icons/plus.svg";
 
@@ -83,7 +85,6 @@ export function showProjectButton(project) {
         const taskCard = document.createElement("div");
         taskCard.classList.add("tasks");
 
-        // eslint-disable-next-line no-restricted-syntax
         for (const task of project.tasks) {
             taskCard.appendChild(showTask(task));
         }
@@ -180,7 +181,6 @@ export function addProjectOrTasK() {
 }
 
 export function loadProjects() {
-    // eslint-disable-next-line no-restricted-syntax
     for (const project of projects) {
         showProjectButton(project);
     }
@@ -202,9 +202,7 @@ export function showDatePage() {
             const tasks = document.createElement("tasks");
             tasks.classList.add("tasks");
 
-            // eslint-disable-next-line no-restricted-syntax
             for (const project of projects) {
-                // eslint-disable-next-line no-restricted-syntax
                 for (const task of project.tasks) {
                     tasks.appendChild(showTask(task));
                 }

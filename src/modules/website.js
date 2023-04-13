@@ -1,8 +1,4 @@
-import {
-    addProjectOrTasK,
-    loadProjects,
-    showDatePage,
-} from "./UI";
+import { addProjectOrTasK, loadProjects, showDatePage } from "./UI";
 
 function showForum(button) {
     button.addEventListener("click", () => {
