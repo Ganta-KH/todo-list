@@ -1,6 +1,5 @@
-import projectSettings from "./CONST";
+import projectSettings, { removeProject } from "./CONST";
 import Project from "./project";
-import { removeProject } from "./website";
 
 export function clearProject() {
     const content = document.getElementById("content");
@@ -45,6 +44,14 @@ export function showTask(task) {
         ? "./icons/checked-task.svg"
         : "./icons/unchecked-task.svg";
 
+    checkedImg.addEventListener("click", () => {
+        checkedImg.src =
+            checkedImg.src === "./icons/checked-task.svg"
+                ? "./icons/unchecked-task.svg"
+                : "./icons/checked-task.svg";
+        task.state = !task.state;
+    });
+
     const p = document.createElement("p");
     p.textContent = task.title;
 
@@ -61,6 +68,13 @@ export function showTask(task) {
     const deleteImg = document.createElement("img");
     deleteImg.classList.add("delete");
     deleteImg.src = "./icons/trash.svg";
+
+    deleteImg.addEventListener("click", (e) => {
+        e.stopPropagation()
+        const taskNumber = taskContainer.childElementCount-2;
+        projectSettings.projects[projectSettings.projectOnIndex].removeTask(taskNumber);
+        taskContainer.remove();
+    });
 
     taskOption.appendChild(editImg);
     taskOption.appendChild(deleteImg);
@@ -123,12 +137,30 @@ export function showProjectButton(project) {
     const trash = document.createElement("img");
     trash.src = "./icons/trashP.svg";
 
-    trash.addEventListener("click", () => {
-        console.log(projectSettings.projects);
+    trash.addEventListener("click", (e) => {
+        e.stopPropagation();
         removeProject(projectSettings.projects, projectSettings.projectOnIndex);
-        console.log(projectSettings.projects);
 
-        trash.parentElement.remove()
+        console.log(
+            trash.parentElement.childElementCount - 2,
+            projectSettings.projectOnIndex
+        );
+        if (
+            trash.parentElement.childElementCount - 2 <
+            projectSettings.projectOnIndex
+        ) {
+            projectSettings.projectOnIndex -= 1;
+        }
+
+        trash.parentElement.remove();
+
+        if (!document.getElementById("content").hasChildNodes()) return;
+        if (
+            document.querySelector(".project-title").textContent ===
+            projectSettings.projectOn
+        ) {
+            clearProject();
+        }
     });
 
     projectButton.appendChild(projectText);
@@ -184,7 +216,6 @@ export function addProjectOrTasK() {
     add.addEventListener("click", () => {
         const newProject = new Project(document.querySelector("input").value);
 
-        console.log(document.querySelector("input").value);
         projectSettings.projects.push(newProject);
 
         showProjectButton(newProject);

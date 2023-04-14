@@ -7,6 +7,10 @@ const projectSettings = {
     projectOnIndex: ""
 };
 
+function removeProject(projects, index) {
+    projects.splice(index, 1);
+}
+
 const projectOne = new Project("Project One");
 
 const taskOne = new Task("task One", true);
@@ -22,4 +26,5 @@ projectSettings.projects.push(projectOne);
 
 console.log(projectSettings.projects);
 
+export { removeProject };
 export default projectSettings;
