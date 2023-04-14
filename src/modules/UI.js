@@ -1,4 +1,4 @@
-import projects from "./CONST";
+import projectSettings from "./CONST";
 import Project from "./project";
 
 export function clearProject() {
@@ -102,6 +102,10 @@ export function showProjectButton(project) {
 
     projectButton.addEventListener("click", showProjectPage);
 
+    projectButton.addEventListener("click", () => {
+        projectSettings.projectOn = projectButton.textContent;
+    });
+
     const projectText = document.createElement("div");
     projectText.classList.add("project-text");
 
@@ -171,7 +175,7 @@ export function addProjectOrTasK() {
         const newProject = new Project(document.querySelector("input").value);
 
         console.log(document.querySelector("input").value);
-        projects.push(newProject);
+        projectSettings.projects.push(newProject);
 
         showProjectButton(newProject);
 
@@ -181,7 +185,7 @@ export function addProjectOrTasK() {
 }
 
 export function loadProjects() {
-    for (const project of projects) {
+    for (const project of projectSettings.projects) {
         showProjectButton(project);
     }
 }
@@ -202,7 +206,7 @@ export function showDatePage() {
             const tasks = document.createElement("tasks");
             tasks.classList.add("tasks");
 
-            for (const project of projects) {
+            for (const project of projectSettings.projects) {
                 for (const task of project.tasks) {
                     tasks.appendChild(showTask(task));
                 }
@@ -210,7 +214,7 @@ export function showDatePage() {
 
             projectPage.appendChild(tasks);
 
-            content.appendChild(projectPage)
+            content.appendChild(projectPage);
         });
     });
 }

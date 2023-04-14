@@ -1,7 +1,10 @@
 import Task from "./task";
 import Project from "./project";
 
-const projects = [];
+const projectSettings = {
+    projects: [],
+    projectOn: "",
+};
 
 const projectOne = new Project("Project One");
 
@@ -13,9 +16,9 @@ projectOne.addTask(taskOne);
 projectOne.addTask(taskTwo);
 projectOne.addTask(taskThree);
 
-projects.push(projectOne)
+projectSettings.projects.push(projectOne);
 // project.removeTask(1);
 
-console.log(projects)
+console.log(projectSettings.projects);
 
-export default projects;
+export default projectSettings;
