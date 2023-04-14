@@ -1,5 +1,6 @@
 import projectSettings, { removeProject } from "./CONST";
 import Project from "./project";
+import Task from "./task";
 
 export function clearProject() {
     const content = document.getElementById("content");
@@ -18,7 +19,9 @@ export function addTaskButton() {
     const button = document.createElement("button");
     button.classList.add("sb-button");
 
-    button.addEventListener("click", addProjectOrTasK);
+    button.addEventListener("click", () => {
+        addProjectOrTasK("task");
+    })
 
     const image = document.createElement("img");
     image.src = "./icons/plus.svg";
@@ -175,7 +178,7 @@ export function addProjectToSidebar(project) {
     sidebar.appendChild(showProjectButton(project));
 }
 
-export function addProjectOrTasK() {
+export function addProjectOrTasK(obj) {
     const body = document.querySelector("body");
 
     const info = document.createElement("div");
@@ -214,14 +217,26 @@ export function addProjectOrTasK() {
     body.prepend(info);
 
     add.addEventListener("click", () => {
-        const newProject = new Project(document.querySelector("input").value);
+        if (obj === "project") {
+            const newProject = new Project(
+                document.querySelector("input").value
+            );
 
-        projectSettings.projects.push(newProject);
+            projectSettings.projects.push(newProject);
 
-        showProjectButton(newProject);
+            showProjectButton(newProject);
+        } else {
+            const newTask = new Task(document.querySelector("input").value);
+        
+            projectSettings.projects[projectSettings.projectOnIndex].addTask(newTask);
+            const tasksContainer = document.querySelector(".tasks")
+            
+            tasksContainer.appendChild(showTask(newTask));
+        }
 
         const infoDiv = document.querySelector(".info");
         infoDiv.remove();
+
     });
 }
 
@@ -261,10 +276,3 @@ export function showDatePage() {
     });
 }
 
-/* export function showAllTasks() {
-    for (const project of projects) {
-        for (const task of project.tasks) {
-            showTask(task);
-        }
-    }
-} */

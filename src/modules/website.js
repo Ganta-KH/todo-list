@@ -1,8 +1,13 @@
+import projectSettings from "./CONST";
 import { addProjectOrTasK, loadProjects, showDatePage } from "./UI";
 
 function showForum(button) {
     button.addEventListener("click", () => {
-        addProjectOrTasK();
+        const p = projectSettings.projectOn;
+        projectSettings.projectOn = "";
+        addProjectOrTasK("project");
+
+        projectSettings.projectOn = p;
     });
 }
 
