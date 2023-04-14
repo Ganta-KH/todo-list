@@ -4,6 +4,7 @@ import Project from "./project";
 const projectSettings = {
     projects: [],
     projectOn: "",
+    projectOnIndex: ""
 };
 
 const projectOne = new Project("Project One");

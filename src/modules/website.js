@@ -13,4 +13,9 @@ function initPage() {
     showDatePage();
 }
 
+function removeProject(projects, index) {
+    projects.splice(index, 1);
+}
+
+export { removeProject };
 export default initPage;

@@ -1,5 +1,6 @@
 import projectSettings from "./CONST";
 import Project from "./project";
+import { removeProject } from "./website";
 
 export function clearProject() {
     const content = document.getElementById("content");
@@ -92,19 +93,20 @@ export function showProjectButton(project) {
         projectPage.appendChild(taskCard);
 
         content.appendChild(projectPage);
+
+        projectSettings.projectOn = projectButton.textContent;
+
+        projectSettings.projectOnIndex =
+            projectButton.parentElement.childElementCount - 2;
     }
 
     const projectsSidebar = document.querySelector(".projects");
 
     const projectButton = document.createElement("button");
     projectButton.classList.add("sb-button");
-    projectButton.setAttribute("id", "project");
+    projectButton.classList.add("projectButton");
 
     projectButton.addEventListener("click", showProjectPage);
-
-    projectButton.addEventListener("click", () => {
-        projectSettings.projectOn = projectButton.textContent;
-    });
 
     const projectText = document.createElement("div");
     projectText.classList.add("project-text");
@@ -120,6 +122,14 @@ export function showProjectButton(project) {
 
     const trash = document.createElement("img");
     trash.src = "./icons/trashP.svg";
+
+    trash.addEventListener("click", () => {
+        console.log(projectSettings.projects);
+        removeProject(projectSettings.projects, projectSettings.projectOnIndex);
+        console.log(projectSettings.projects);
+
+        trash.parentElement.remove()
+    });
 
     projectButton.appendChild(projectText);
     projectButton.appendChild(trash);
@@ -197,6 +207,7 @@ export function showDatePage() {
             const content = document.getElementById("content");
 
             clearProject();
+            projectSettings.projectOn = "";
 
             const projectPage = document.createElement("div");
             projectPage.classList.add("project");
